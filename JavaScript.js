@@ -36,7 +36,16 @@ function operate(num1,num2,operator){
 
 }
 
-fitText(document.querySelector("p"), 0.38);
+//Create the functions that populate the display when 
+//you click the number buttons. You should be storing 
+//the ‘display value’ in a variable somewhere for use 
+//in the next step.
+
+const btns = document.querySelectorAll(".btn");
+btns.forEach(btn => btn.addEventListener("click", function(){
+    alert(btn.value)
+}));
+
 
 //i guess i can implement all of this into a stack?
 //and then through the stack I can check if there are enough

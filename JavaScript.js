@@ -36,6 +36,8 @@ function operate(num1,num2,operator){
 
 }
 
+fitText(document.querySelector("p"), 0.38);
+
 //i guess i can implement all of this into a stack?
 //and then through the stack I can check if there are enough
 //numbers to do the operation with and if there aren't then 

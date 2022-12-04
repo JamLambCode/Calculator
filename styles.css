@@ -5,10 +5,21 @@
 body{
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    
+}
 
+p{
+    color: #5b6f7f;
+}
+
+.bold{
+    font-size:larger;
+    font-weight: bolder;
+    color: #D597A2;
+    
 }
 
 .calculator {
@@ -78,7 +89,7 @@ body{
 .btn:hover,
 .specialBtn:hover{
     background-color: #495a69;
-
+    cursor:pointer;
 }
 
 .btn{
@@ -86,6 +97,7 @@ body{
     width: 40px;
     border-radius: 100%;
     background-color: #5b6f7f
+    
 
 }
 

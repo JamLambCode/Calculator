@@ -45,6 +45,7 @@ const btns = document.querySelectorAll(".btn");
 const screen = document.querySelector(".screen");
 const text = document.createElement("p");
 const answer = document.createElement("p");
+answer.classList.add("bold");
 screen.append(text);
 screen.append(answer);
 let secondHalf = false;

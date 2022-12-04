@@ -66,7 +66,6 @@ btns.forEach(btn => btn.addEventListener("click", function(){
         else{
             //we need to make sure that we still don't have an operator so we know we are working on the first number
             if(operator == ""){
-                alert(value1);
                 (Number(value1) > 0 ) ? value1 = "-" + value1 : value1 = Math.abs(value1); 
                 text.textContent = `${value1}`;
             }
@@ -184,6 +183,7 @@ addEventListener("keydown", (e) => {
             if(operator == ""){
                 operator = e.key;
                 text.textContent = `${value1} ${operator}` 
+                secondHalf = true;
             }
             else if(value2 != "" && !(isNaN(answer.textContent))){ //add the nan stuff if the output is error you can't operate anymore
                 if(typeof(operate(Number(value1), Number(value2), operator)) != "string"){
@@ -202,6 +202,7 @@ addEventListener("keydown", (e) => {
                 value2 = "";
                 operator = `${e.key}`;
                 text.textContent = value1 +  " " + operator + " ";
+                secondHalf = true;
                 
                 
                 }
@@ -218,35 +219,28 @@ addEventListener("keydown", (e) => {
         else{
             answer.textContent = (operate(Number(value1), Number(value2), operator));
         }
+        secondHalf = false;
 
     }
     else if(e.key == "."){
+        //alert(secondHalf);
         if(secondHalf == true && answer.textContent == ""){
-            if(btn.value == "."){
                 if(!(value2.includes("."))){ //we are ignoring if it already has a decimal
+                
                     value2 += e.key;
                     text.textContent += `${e.key}`;
                 }
-            }
-            else{
-                value2 += e.key;
-                text.textContent += `${e.key}`
-                
-            //alert(value2);
-            }
+                else{
+                   
+                }
+          
         }
         else{ //this is value1
             if(answer.textContent == "") { //making sure that we don't allow value2 to change once we have the answer
-                if(e.key == "."){
                     if(!(value1.includes("."))){ //we are ignoring if it already has a decimal
                         value1 += e.key;
                         text.textContent += `${e.key}`;
                     }
-                }
-                else{
-                    value1 += e.key;
-                    text.textContent += `${e.key}`
-                }
             }
         }
      }

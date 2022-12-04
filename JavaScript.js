@@ -58,7 +58,7 @@ btns.forEach(btn => btn.addEventListener("click", function(){
     if(isNaN(btn.value) && btn.value != "."){
         //if it is not a number (meaning that it is an operator)
         //we want to then check if there are numbers in text already
-        if(btn.value == "="){
+        if(btn.value == "=" || (isNaN(btn.value) &&  (value2 != "") && btn.value != "AC")){
             //we just check if it operates a string first and foremost bc that means its an error
             if(typeof(operate(Number(value1), Number(value2), operator)) != "string"){
                 (Number.isInteger((operate(Number(value1), Number(value2), operator)))) 
@@ -67,6 +67,15 @@ btns.forEach(btn => btn.addEventListener("click", function(){
             }
             else{
                 answer.textContent = (operate(Number(value1), Number(value2), operator));
+            }
+            if(btn.value != "="){ //this is to evaluate if you continue evaluating
+                value1 = answer.textContent;
+                answer.textContent="";
+                text.textContent =""
+                value2 = "";
+                operator = `${btn.value}`;
+                text.textContent += value1 +  " " + operator + " ";
+
             }
         }
         else if(btn.value == "AC"){
@@ -81,7 +90,7 @@ btns.forEach(btn => btn.addEventListener("click", function(){
         else if(isNaN(screen.firstChild.textContent) || screen.firstChild.textContent == ""){
             //this catches an error if you try and type 2 operators back to back
             //also catches if you begin with an operator
-            alert("ERROR");
+            alert("ERROR,2");
         }
         else if(screen.firstChild){
             //this checks if it atleast has 1 child

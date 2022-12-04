@@ -159,3 +159,113 @@ btns.forEach(btn => btn.addEventListener("click", function(){
         }
     }
 }));
+
+addEventListener("keydown", (e) => {
+    //this.alert(e.key);
+    if(e.key == 'Backspace' && text.textContent != "" && answer.textContent == ""){
+        if(value2 != ""){
+            value2 = value2.slice(0, -1);
+            text.textContent = `${value1} ${operator} ${value2}`;
+        }
+        else if(operator != ""){
+            operator = "";
+            text.textContent = `${value1}`;
+        }
+        else{
+            value1 = value1.slice(0, -1);
+            text.textContent = `${value1}`;
+        }
+    }
+    else if(e.key == "+" || e.key == "/" || e.key == "*" || e.key == "-"){
+        if(value1 == ""){
+
+        }
+        else{
+            if(operator == ""){
+                operator = e.key;
+                text.textContent = `${value1} ${operator}` 
+            }
+            else if(value2 != "" && !(isNaN(answer.textContent))){ //add the nan stuff if the output is error you can't operate anymore
+                if(typeof(operate(Number(value1), Number(value2), operator)) != "string"){
+                    (Number.isInteger((operate(Number(value1), Number(value2), operator)))) 
+                    ? answer.textContent = (operate(Number(value1), Number(value2), operator))
+                    : answer.textContent = (operate(Number(value1), Number(value2), operator)).toFixed(2);
+                }
+                else{
+                    answer.textContent = (operate(Number(value1), Number(value2), operator));
+                }
+                //this is to evaluate if you continue evaluating
+                
+                value1 = answer.textContent;
+                answer.textContent="";
+                text.textContent =""
+                value2 = "";
+                operator = `${e.key}`;
+                text.textContent = value1 +  " " + operator + " ";
+                
+                
+                }
+        }
+        
+    }
+    else if(e.key == "Enter" &&  (value2 != "")){
+        
+        if(typeof(operate(Number(value1), Number(value2), operator)) != "string"){
+            (Number.isInteger((operate(Number(value1), Number(value2), operator)))) 
+            ? answer.textContent = (operate(Number(value1), Number(value2), operator))
+            : answer.textContent = (operate(Number(value1), Number(value2), operator)).toFixed(2);
+        }
+        else{
+            answer.textContent = (operate(Number(value1), Number(value2), operator));
+        }
+
+    }
+    else if(e.key == "."){
+        if(secondHalf == true && answer.textContent == ""){
+            if(btn.value == "."){
+                if(!(value2.includes("."))){ //we are ignoring if it already has a decimal
+                    value2 += e.key;
+                    text.textContent += `${e.key}`;
+                }
+            }
+            else{
+                value2 += e.key;
+                text.textContent += `${e.key}`
+                
+            //alert(value2);
+            }
+        }
+        else{ //this is value1
+            if(answer.textContent == "") { //making sure that we don't allow value2 to change once we have the answer
+                if(e.key == "."){
+                    if(!(value1.includes("."))){ //we are ignoring if it already has a decimal
+                        value1 += e.key;
+                        text.textContent += `${e.key}`;
+                    }
+                }
+                else{
+                    value1 += e.key;
+                    text.textContent += `${e.key}`
+                }
+            }
+        }
+     }
+    else{
+        if(isFinite(e.key) && e.key != " "){
+            if(value2 == "" && operator == ""){
+                value1 += e.key;
+                text.textContent = value1;
+            }
+            else{
+                if(answer.textContent == ""){
+                    value2 += e.key;
+                    text.textContent = `${value1} ${operator} ${value2}`;
+                }
+            }
+
+        }
+    }
+    
+
+
+})

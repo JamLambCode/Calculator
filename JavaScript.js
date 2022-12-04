@@ -11,7 +11,7 @@ function multiply(a,b){
 }
 
 function divide(a,b){
-    return a/b;
+    return (b==0) ? "ERROR" : a/b;
 }
 
 function operate(num1,num2,operator){
@@ -59,9 +59,15 @@ btns.forEach(btn => btn.addEventListener("click", function(){
         //if it is not a number (meaning that it is an operator)
         //we want to then check if there are numbers in text already
         if(btn.value == "="){
-            //alert(operate(parseInt(value1), parseInt(value2), operator));
-            answer.textContent = (operate(Number(value1), Number(value2), operator)).toFixed(2);
-
+            //we just check if it operates a string first and foremost bc that means its an error
+            if(typeof(operate(Number(value1), Number(value2), operator)) != "string"){
+                (Number.isInteger((operate(Number(value1), Number(value2), operator)))) 
+                ? answer.textContent = (operate(Number(value1), Number(value2), operator))
+                : answer.textContent = (operate(Number(value1), Number(value2), operator)).toFixed(2);
+            }
+            else{
+                answer.textContent = (operate(Number(value1), Number(value2), operator));
+            }
         }
         else if(btn.value == "AC"){
             value1 = "";

@@ -15,9 +15,8 @@
 
 #### **Tools:**
 * Visual Studio Code
-* Linux terminal
+* MacOS Terminal
 * Git and GitHub
-* ESLint + Airbnb JavaScript Style Guide
 
 #### **Third party code:**
 * [Google Fonts](https://fonts.google.com/)

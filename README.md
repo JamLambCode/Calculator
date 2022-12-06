@@ -6,11 +6,11 @@
 ### Overview of The Project
 #### **Features:**
 * Calculator **calculates** a single pair of numbers at a time
-* Supported operations: **power**, **divide**, **multiply**, **subtract**, **add** 
+* Supported operations: **divide**, **multiply**, **subtract**, **add** 
 * Added **clear button**
 * Added **decimal button**
 * Added **keyboard support**
-* Operations buttons (`^`, `/`, `*`, `-`, `+`, `=`) NOTE: they are **prevented from pushing** if there aren't any numbers in the input
+* Operations buttons (`/`, `*`, `-`, `+`, `=`) NOTE: they are **prevented from pushing** if there aren't any numbers in the input
 * Decimal button (`.`) is also **prevented from pushing twice**
 
 #### **Tools:**

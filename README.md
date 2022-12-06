@@ -1,7 +1,7 @@
 # Calculator
   This is an on-screen calculator from The Odin Project [curriculum](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator).
 
-🔗 **Live preview** of the project is [here](https://mooniidev.github.io/calculator/).
+🔗 **Live preview** of the project can be found [here](https://jamlambcode.github.io/Calculator/).
 
 ### Overview of The Project
 #### **Features:**
